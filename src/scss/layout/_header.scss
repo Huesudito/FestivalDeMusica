@@ -1,0 +1,56 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    position: relative; /* Comportamiento normal */
+    width: 100%;
+    z-index: 1000; /* Asegúrate de que la barra esté por encima del contenido */
+    background-color: v.$verde; /* Color de fondo */
+    transition: top 0.3s ease-in-out; /* Animación suave si lo deseas */
+    @include m.tablet {
+        &.fixed {
+            position: fixed;  /* Fija la barra en la parte superior */
+            top: 0; /* Alinea la barra a la parte superior de la página */
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.866); /* Opcional: sombra para destacar la barra */
+            padding: 10px 0;
+        }
+
+    }
+    
+    .contenido-header {
+        padding: 2rem;
+        @include m.tablet {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    h1 {
+        color: v.$blanco;
+        text-align: center;
+        margin-bottom: 10px;
+        @include m.tablet {
+            margin: 0;
+            text-align: left;
+        }
+    }
+}
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    @include m.tablet {
+        flex-direction: row;
+    }
+    a {
+        font-size: 2.4rem;
+        color: v.$blanco;
+        &:hover,
+        &.active {
+            color: v.$amarillo;
+        }
+    }
+}
